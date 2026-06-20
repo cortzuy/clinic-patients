@@ -11,6 +11,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('dashboard', function () {
         return Inertia::render('dashboard');
     })->name('dashboard');
+
+    Route::get('patients', [App\Http\Controllers\PatientController::class, 'index'])->name('patients');
 });
 
 require __DIR__.'/settings.php';

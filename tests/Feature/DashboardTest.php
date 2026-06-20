@@ -21,4 +21,11 @@ class DashboardTest extends TestCase
 
         $this->get('/dashboard')->assertOk();
     }
+
+    public function test_authenticated_users_can_visit_the_patients_page()
+    {
+        $this->actingAs($user = User::factory()->create());
+
+        $this->get('/patients')->assertOk();
+    }
 }
