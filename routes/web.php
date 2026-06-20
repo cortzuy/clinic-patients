@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PatientController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -12,7 +13,9 @@ Route::middleware(['auth'])->group(function () {
         return Inertia::render('dashboard');
     })->name('dashboard');
 
-    Route::get('patients', [App\Http\Controllers\PatientController::class, 'index'])->name('patients');
+    Route::get('patients', [PatientController::class, 'index'])->name('patients');
+    Route::get('patients/create', [PatientController::class, 'create'])->name('patients.create');
+    Route::post('patients', [PatientController::class, 'store'])->name('patients.store');
 });
 
 require __DIR__.'/settings.php';

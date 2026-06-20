@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use Database\Factories\PatientFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Patient extends Model
 {
-    /** @use HasFactory<\Database\Factories\PatientFactory> */
+    /** @use HasFactory<PatientFactory> */
     use HasFactory;
 
     protected $fillable = [
@@ -27,11 +28,33 @@ class Patient extends Model
         'patient_tags',
         'avatar_url',
         'notes',
+        'nationality',
+        'race',
+        'religion',
+        'address',
+        'other_mobile',
+        'parent_guardian_1',
+        'parent_guardian_2',
+        'show_parent_guardian_names',
+        'occupation',
+        'employer_name',
+        'employer_address',
+        'employer_phone',
+        'hmo',
+        'emergency_contact_name',
+        'emergency_contact_number',
+        'emergency_contact_relationship',
+        'referring_physician',
+        'primary_care_physician',
+        'other_physicians',
+        'consent',
     ];
 
     protected $casts = [
         'birth_date' => 'date',
         'invite_to_nowserving' => 'boolean',
         'patient_tags' => 'array',
+        'show_parent_guardian_names' => 'boolean',
+        'consent' => 'boolean',
     ];
 }
