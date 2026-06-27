@@ -22,6 +22,13 @@ class PatientController extends Controller
         ]);
     }
 
+    public function show(Patient $patient)
+    {
+        return Inertia::render('patients-show', [
+            'patient' => $patient->load(['soapNotes.user']),
+        ]);
+    }
+
     public function store(PatientStoreRequest $request)
     {
         $validated = $request->validated();
@@ -34,8 +41,8 @@ class PatientController extends Controller
 
         $validated['primary_mobile'] = $validated['primary_mobile'] ?? '';
 
-        Patient::create($validated);
+        $patient = Patient::create($validated);
 
-        return to_route('patients');
+        return to_route('patients.show', $patient);
     }
 }

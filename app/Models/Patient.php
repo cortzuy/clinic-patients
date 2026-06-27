@@ -5,6 +5,7 @@ namespace App\Models;
 use Database\Factories\PatientFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Patient extends Model
 {
@@ -57,4 +58,9 @@ class Patient extends Model
         'show_parent_guardian_names' => 'boolean',
         'consent' => 'boolean',
     ];
+
+    public function soapNotes(): HasMany
+    {
+        return $this->hasMany(SoapNote::class)->latest();
+    }
 }

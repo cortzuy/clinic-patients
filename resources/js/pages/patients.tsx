@@ -42,7 +42,7 @@ export default function Patients() {
         suffix: '',
         nickname: '',
         birth_date: '',
-        sex: 'male',
+        sex: '' as 'male' | 'female' | '',
         email: '',
         primary_mobile: '',
         invite_to_nowserving: false,
@@ -172,7 +172,7 @@ export default function Patients() {
                             <InputError className="mt-1" message={errors.email} />
                         </FieldRow>
 
-                        <FieldRow label="Primary Mobile">
+                        <FieldRow label="Primary Mobile" required>
                             <div className="flex items-center gap-2">
                                 <span className="inline-flex items-center gap-1 rounded-md border border-input bg-muted px-3 py-2 text-sm text-neutral-700 dark:text-neutral-300">
                                     🇵🇭 +63
